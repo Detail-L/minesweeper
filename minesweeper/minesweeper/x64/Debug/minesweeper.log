@@ -1,2 +1,6 @@
-﻿  main.cpp
+﻿  func.cpp
+  main.cpp
+  share.cpp
+  ui.cpp
+  正在生成代码...
   minesweeper.vcxproj -> D:\Codes\NUAAGeekClubWorkSpace\minesweeper\minesweeper\x64\Debug\minesweeper.exe

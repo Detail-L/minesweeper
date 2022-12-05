@@ -132,6 +132,11 @@
     <ClCompile Include="share.cpp" />
     <ClCompile Include="ui.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="func.h" />
+    <ClInclude Include="share.h" />
+    <ClInclude Include="ui.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
