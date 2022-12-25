@@ -1,9 +1,9 @@
 #include "share.h"
-#include <stdbool.h>
+
 
 unsigned char Map[MapL][MapH];  //储存地图信息
 /*
-	0-3位储存周围雷数（0-8表示雷数，9表示雷）
+	0-3位储存周围雷数（0-8表示雷数，雷为9）
 	4位储存是否为雷
 	5位表示是否遮盖（既是否被翻开）
 	6-7位表示如果被遮盖显示的内容
@@ -12,6 +12,9 @@ unsigned char Map[MapL][MapH];  //储存地图信息
 /* 操作地图周边雷数 */
 //得到周围雷数（在无遮盖时显示数字）
 unsigned char GetMineNum(int x, int y) {
+	if (x < 0 || x >= MapL || y < 0 || y >= MapH) {
+		return 0;
+	}
 	return Map[x][y] & 0x0F;//0000 1111
 }
 
@@ -26,6 +29,9 @@ void SetMineNum(int x, int y, unsigned char v) {
 /* 操作雷 */
 //一个位置是否有雷
 bool GetMine(int x, int y) {
+	if (x < 0 || x >= MapL || y < 0 || y >= MapH) {
+		return 0;
+	}
 	return (bool)(Map[x][y] & 0x10);//0001 0000
 }
 

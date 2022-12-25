@@ -6,9 +6,21 @@
 #include "ui.h"
 #include "share.h"
 
+#define M 25
 
-int main()
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, int nCmdShow)
 {
-	
+	mapinit(M);
+	initgame();
+	for (int i = 0;i < MapL;i++) {
+		for (int j = 0;j < MapH;j++) {
+			Draw(i, j);
+		}
+	}
+	while (1) {
+
+		Sleep(1);
+	}
+	closegame();
 	return 0;
 }

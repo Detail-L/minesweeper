@@ -1,7 +1,8 @@
 #pragma once
+#include <stdbool.h>
 
-#define MapL 35  //地图宽度
-#define MapH 35  //地图高度
+#define MapL 15  //地图宽度
+#define MapH 15  //地图高度
 
 unsigned char GetMineNum(int x, int y);
 void SetMineNum(int x, int y, unsigned char v);
