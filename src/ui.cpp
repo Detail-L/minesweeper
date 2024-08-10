@@ -1,8 +1,10 @@
 #include "ui.h"
 
+PIMAGE img_mine = NULL;
+PIMAGE img_doubt = NULL;
+PIMAGE img_flag = NULL;
+
 //ui部分
-
-
 void initgame() {
 	setcaption("Minesweeper");
 	initgraph(W_Window, H_Window);
@@ -17,6 +19,13 @@ void initgame() {
 				Draw(i, j);
 			}
 	}
+	//从资源文件中读取图片
+	img_mine = newimage();
+	getimage(img_mine, "PNG", "IMG_MINE");
+	img_doubt = newimage();
+	getimage(img_doubt, "PNG", "IMG_DOUBT");
+	img_flag = newimage();
+	getimage(img_flag, "PNG", "IMG_FLAG");
 }
 
 void closegame() {
@@ -47,9 +56,6 @@ void Draw(int x, int y) {
 	if(GetMasks(x, y)){
 		setfillcolor(EGERGB(255, 204, 204));
 	}
-	else if (GetMine(x, y)) {
-		setfillcolor(RED);
-	}
 	else {
 		setfillcolor(EGERGB(204, 255, 204));
 	}
@@ -65,11 +71,19 @@ void Draw(int x, int y) {
 			setcolor(GREEN);
 			outtextxy(d.left+W_Window/MapL/2, d.top+H_Window/MapH/2, *out);
 		}
-	}else if(GetMasks(x, y)){
+	}
+	else if(GetMasks(x, y)){
 		switch(GetMaskMode(x, y)){
-			case (unsigned char)1: outtextxy(d.left+W_Window/MapL/2, d.top+H_Window/MapH/2, 'M'); break;
-			case (unsigned char)2: outtextxy(d.left+W_Window/MapL/2, d.top+H_Window/MapH/2, 'D'); break;
+			case (unsigned char)1: 
+				putimage(d.left, d.top, W_Window/MapL, H_Window/MapH, img_flag, 0, 0, getwidth(img_flag), getheight(img_flag));
+				break;
+			case (unsigned char)2:
+				putimage(d.left, d.top, W_Window/MapL, H_Window/MapH, img_doubt, 0, 0, getwidth(img_doubt), getheight(img_doubt));
+				break;
 		}
+	}
+	else if(GetMine(x, y)){
+		putimage(d.left, d.top, W_Window/MapL, H_Window/MapH, img_mine, 0, 0, getwidth(img_mine), getheight(img_mine));
 	}
 }
 

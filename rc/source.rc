@@ -1,1 +1,5 @@
 IDI_ICON1 ICON "icon.ico"
+
+IMG_MINE PNG "mine.png"
+IMG_DOUBT PNG "doubt.png"
+IMG_FLAG PNG "flag.png"

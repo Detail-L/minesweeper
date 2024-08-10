@@ -23,16 +23,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
 			case 2: success(); break;
 		}	
 		
-		bool flag = 1;
-		while(flag){
+		int flag = 1;
+		while(flag == 1){
 			while (mousemsg()) {
 				mouse_msg msg = getmouse();
 				if (msg.is_left() && msg.is_down()){
 					flag = 0;
 				}
+				else if(msg.is_right() && msg.is_down()){
+					flag = -1;
+				}
 			}
 			Sleep(50);
 		}
+		if(flag == -1)
+			break;
 		Sleep(300);
 	}
 	
